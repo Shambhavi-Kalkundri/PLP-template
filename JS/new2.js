@@ -312,6 +312,34 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
 // for (let fieldId in filters) {
 //              const displayName = filters[fieldId].displayName;
 //              const values = filters[fieldId].values;
+              // sideBar = document.getElementsByClassName('sidebar')[0];
+              // console.log(data);
+              // facets = data["facets"] || "NULL";
+              // console.log(facets);
+              // keys = Object.keys(facets) || "NULL";
+              // console.log(keys);
+              // sideBar.innerHTML += '<hr class="horizontalbreak1">'
+              // for (ind in keys) {
+              //   var fieldName = document.createElement("div");
+                
+              //   fieldName.classList.add("fieldName");
+
+        
+              //   fieldName.innerHTML += `
+              //   <p class="p"><b>${facets[keys[ind]]["displayName"]}</b></p>
+              //   <form id = "category">
+              //   `
+              //   for (let ind2 = 0; ind2 < facets[keys[ind]]["values"].length; ind2 += 2) {
+        
+              //       fieldName.innerHTML += `
+              //           <input type="checkbox" class="filter" name="`+facets[keys[ind]]["fieldId"]+`" id="`+facets[keys[ind]]["values"][ind2]+`" onchange=check()>
+              //           <label for="categorylabel"> ${facets[keys[ind]]["values"][ind2]}(${(facets[keys[ind]]["values"][ind2+1])})</label><br>
+              //       `
+              //   }
+              //   fieldName.innerHTML += '<hr class="horizontalbreak1">';
+              //   fieldName.innerHTML += "</form>";
+              //   sideBar.appendChild(fieldName);
+              // }
               sideBar = document.getElementsByClassName('sidebar')[0];
               console.log(data);
               facets = data["facets"] || "NULL";
@@ -321,6 +349,9 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
               sideBar.innerHTML += '<hr class="horizontalbreak1">'
               for (ind in keys) {
                 var fieldName = document.createElement("div");
+                
+                fieldName.classList.add("fieldName");
+
         
                 fieldName.innerHTML += `
                 <p class="p"><b>${facets[keys[ind]]["displayName"]}</b></p>
@@ -333,7 +364,7 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
                         <label for="categorylabel"> ${facets[keys[ind]]["values"][ind2]}(${(facets[keys[ind]]["values"][ind2+1])})</label><br>
                     `
                 }
-                fieldName.innerHTML += '<hr class="horizontalbreak1">';
+                
                 fieldName.innerHTML += "</form>";
                 sideBar.appendChild(fieldName);
               }
@@ -360,26 +391,39 @@ fetch("https://pim.unbxd.io/peppercorn/api/v2/catalogueView/6391b1448f93e6700274
               document.getElementById('next').disabled = true;
             }
             }
-    if (decodedFacetArray.length > 0 || search_query.length > 0) {
-  // If decodedFacetArray has elements or search_query is not an empty string, mark the checkboxes
-  if (decodedFacetArray.length > 0 && decodedFacetArray[0] !== "") {
-    var markedCheckBox1 = document.querySelectorAll('input[type="checkbox"].filter');
-    for (var checked of markedCheckBox1) {
-      checked.checked = true;
-    }
+//     if (decodedFacetArray.length > 0 || search_query.length > 0) {
+//   // If decodedFacetArray has elements or search_query is not an empty string, mark the checkboxes
+//   if (decodedFacetArray.length > 0 && decodedFacetArray[0] !== "") {
+//     var markedCheckBox1 = document.querySelectorAll('input[type="checkbox"].filter');
+//     for (var checked of markedCheckBox1) {
+//       checked.checked = true;
+//     }
+//   }
+
+//   // When Home is clicked, go back to the previous page
+//   document.getElementById("Home").addEventListener("click", function(event) {
+//     event.preventDefault();  // Prevent the default action of the link
+//     history.back();  // Go back to the previous page
+//   });
+// }
+// else {
+//   // If decodedFacetArray has no elements and search_query is an empty string, disable the Home button
+//   document.getElementById("Home").disabled = true;
+// }
+
+if (decodedFacetArray.length > 0){
+  if(decodedFacetArray[0] !== ""){
+  var markedCheckBox1 = document.querySelectorAll('input[type="checkbox"].filter');
+  for (var checked of markedCheckBox1){
+    checked.checked=true;
+  }}
+  else if(decodedFacetArray[0] ==""){
+    document.getElementById("logo").disabled=true
   }
-
-  // When Home is clicked, go back to the previous page
-  document.getElementById("Home").addEventListener("click", function(event) {
-    event.preventDefault();  // Prevent the default action of the link
-    history.back();  // Go back to the previous page
-  });
 }
-else {
-  // If decodedFacetArray has no elements and search_query is an empty string, disable the Home button
-  document.getElementById("Home").disabled = true;
+else{
+document.getElementById("logo").disabled=true
 }
-
 
     });
 
