@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>My Website</title>
-		<link rel="stylesheet" href="/CSS/style3.css">
-	    
-		
+			<meta charset="UTF-8">
+			<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+			<title>My Website</title>
+      			<link rel="stylesheet" href="/CSS/style3.css">
 	</head>
+		
 	<body>
 		<header>
-			<div class="logo">
+			<div class="logo">	
+			<button id="logo" class="logo-button" type="button" onclick="reset()">
 				<img src="logo.png" alt="Company Logo">
+			  </button>
+			  
 			</div>
 			 <form class="search-bar">
 				<input type="text" id= "srch" placeholder="Search..." oninput="search()">
-			
+				<button id="reset-button">Reset</button>
 			</form> 
 			
 			  
 		</header>
-		<nav class="topnav">
-			<!-- <a href="#">Home</a> -->
-			<button id="Home" class="btn btn-light" type="text" onclick=reset()>Home</button>
-		</nav>
+		
 		<main>
 			<!-- <div id="product-list"></div> -->
 			<!-- <div class="container"> -->
@@ -37,7 +37,7 @@
 						</div>
 			
 					</div>
-            </div>
+                </div>
 			
 				  <div class="pagi">
 
@@ -53,3 +53,4 @@
 	</body>
 	
 </html>
+
